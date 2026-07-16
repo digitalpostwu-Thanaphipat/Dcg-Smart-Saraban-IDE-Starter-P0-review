@@ -1,0 +1,59 @@
+# DCS-P0-001 — Task Manifest
+รหัสงาน: DCS-P0-001
+ชื่อเรื่อง: "Phase 0 — จัดทำ ADR / Schema Manifest / Spec"
+ผู้ร้องขอ: "เจ้าของโครงการ (อนุมัติคำสั่ง DCS-P0-001)"
+วันที่เริ่ม: "2569-07-16"
+สถานะ: เสร็จด้านเอกสาร — รอตรวจรับ
+
+ขอบเขต:
+  ทำ:
+    - "สร้าง ADR D-01 ถึง D-07 ใน docs/adr/ ตาม docs/00"
+    - "จัดทำโครง Data Dictionary 17 ชีต (docs/data-dictionary.md)"
+    - "นิยาม Schema Manifest (docs/schema-manifest-spec.md)"
+    - "Spec ยกเลิก/ฉบับแทนที่ + Backup/Restore Contract"
+    - "แก้/บันทึก C-01 ถึง C-08 ยึด docs/00 เป็นหลัก"
+    - "docs/07: ระบุผลกระทบและเสนอ sync ชื่อชีต ห้ามเปลี่ยนขอบเขตฐานกลาง"
+    - "ตารางจับคู่เฟส + อัปเดต docs/99 + Skill Evidence"
+  ไม่ทำ:
+    - "เขียนโค้ด apps-script / package.json / tests ที่รันระบบ"
+    - "deploy / clasp push / Staging / Production"
+    - "เชื่อม Google Workspace / Sheets / ข้อมูลจริง"
+    - "ติดตั้ง Skill ภายนอกเพิ่ม"
+
+กระบวนการที่ต้องใช้:
+  - รหัส: WF-01
+    เหตุผล: "กลั่นกรองข้อกำหนด ADR และข้อขัด C-01…C-08"
+  - รหัส: WF-02
+    เหตุผล: "ทำสเปก Dictionary/Manifest/ยกเลิก-แทนที่/Backup"
+  - รหัส: WF-03
+    เหตุผล: "ตารางจับคู่เฟสและลำดับงานก่อน Phase 1"
+
+Skill_เฉพาะโครงการ:
+  - "google-sheets-data-contract"
+  - "apps-script-concurrency-and-audit"
+  - "saraban-document-review"
+Skill_ภายนอกที่อนุมัติ:
+  - "(ไม่ใช้)"
+
+Acceptance_Criteria:
+  - "ADR ครบ 7 ข้อ สถานะถูกต้องตามคำสั่ง"
+  - "Data Dictionary โครง 17 ชีตตาม docs/00"
+  - "Schema Manifest spec + Backup/Restore Contract + Spec ยกเลิก/แทนที่"
+  - "C-01…C-08 แก้ในเอกสารหรือบันทึกผลแล้ว"
+  - "Skill Evidence + รายการรอผู้มีอำนาจ"
+  - "ไม่มีโค้ด deploy หรือข้อมูลจริง"
+
+ความเสี่ยง_และ_การตัดสินใจที่ต้องรอ:
+  - "D-01…D-07 รอชื่อ/วันรับรองจริง"
+  - "D-03/D-04 Deferred บล็อก SLA จริงและ Production"
+  - "ผู้อนุมัติ Skill/Release ยังรอแต่งตั้ง"
+ไฟล์ที่คาดว่าจะกระทบ:
+  - "docs/adr/*"
+  - "docs/data-dictionary.md"
+  - "docs/schema-manifest-spec.md"
+  - "docs/spec-ยกเลิกและฉบับแทนที่.md"
+  - "docs/backup-restore-contract.md"
+  - "docs/phase-mapping.md"
+  - "docs/00, 02, 04, 07, 10, 99"
+  - "AGENTS.md, CONTEXT.md, README.md, prompts/master-prompt.md"
+  - "docs/agent-runs/DCS-P0-001-*"

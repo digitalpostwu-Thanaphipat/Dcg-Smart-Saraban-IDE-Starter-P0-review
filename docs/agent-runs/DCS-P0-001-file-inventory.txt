@@ -1,0 +1,82 @@
+﻿DCS-P0-001 Review Package Inventory
+Generated: 2026-07-16 11:50:18
+Root: D:\Dcg-Smart-Saraban-IDE-Starter
+Constraint: docs only for this task; no apps-script/code/deploy/real data
+
+=== ALL FILES (relative path | bytes) ===
+.agents\skills\apps-script-clasp-development\SKILL.md | 1484
+.agents\skills\apps-script-concurrency-and-audit\SKILL.md | 1791
+.agents\skills\google-sheets-data-contract\SKILL.md | 1952
+.agents\skills\release-apps-script\SKILL.md | 1288
+.agents\skills\saraban-document-review\SKILL.md | 2860
+.agents\skills\thai-ui-quality\SKILL.md | 2420
+.gitignore | 97
+AGENTS.md | 6938
+CONTEXT.md | 4993
+Dcg-Smart-Saraban-IDE-Context.md | 13159
+DESIGN.md | 10522
+docs\00-แผนหลักระยะที่-1.md | 24962
+docs\01-ข้อกำหนดระบบ.md | 2351
+docs\02-ข้อมูลและ-Google-Sheets.md | 4084
+docs\03-ค่าตั้งค่าและแม่แบบ.md | 2278
+docs\04-รายงาน-สำรองข้อมูล-การกู้คืน.md | 4079
+docs\05-การทดสอบและการปล่อยระบบ.md | 1945
+docs\06-การแจ้งเตือนและการปฏิบัติการ.md | 1607
+docs\07-ฐานข้อมูลกลางบุคลากร.md | 5531
+docs\08-โครงสร้าง-Apps-Script-ผ่าน-IDE.md | 6206
+docs\09-ทะเบียน-Skill-ภายนอก.md | 7681
+docs\10-แผนดำเนินงานระยะที่-1.md | 40447
+docs\99-ประเด็นรอการตัดสินใจ.md | 3789
+docs\adr\ADR-01-google-sheets-ฐานปฏิบัติงาน.md | 2588
+docs\adr\ADR-02-วิธีเข้าสู่ระบบ.md | 1258
+docs\adr\ADR-03-sla-กลั่นกรอง.md | 1596
+docs\adr\ADR-04-rpo-rto-backup.md | 1848
+docs\adr\ADR-05-เอกสารลับ.md | 879
+docs\adr\ADR-06-เชื่อมระบบเดิม.md | 955
+docs\adr\ADR-07-ขอบเขตข้อมูล-ai.md | 1376
+docs\adr\README.md | 1739
+docs\agent-runs\.gitkeep | 154
+docs\agent-runs\DCS-P0-001-evidence.md | 6897
+docs\agent-runs\DCS-P0-001-task.yml | 3520
+docs\backup-restore-contract.md | 4777
+docs\c-conflicts-resolution.md | 2079
+docs\data-dictionary.md | 20689
+docs\phase-mapping.md | 4305
+docs\schema-manifest-spec.md | 3763
+docs\spec-ยกเลิกและฉบับแทนที่.md | 6721
+MasterPrompt-Dcg-Smart-Saraban-IDE.md | 2865
+prompts\master-prompt.md | 2865
+README.md | 4413
+skills.lock.md | 3623
+templates\skill-evidence.md | 1178
+templates\task-manifest.yml | 862
+WORKFLOW.md | 11064
+
+=== EVIDENCE-REQUIRED PATHS (absolute) ===
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\agent-runs\DCS-P0-001-task.yml | 3520
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\agent-runs\DCS-P0-001-evidence.md | 6897
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\c-conflicts-resolution.md | 2079
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\README.md | 1739
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-01-google-sheets-ฐานปฏิบัติงาน.md | 2588
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-02-วิธีเข้าสู่ระบบ.md | 1258
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-03-sla-กลั่นกรอง.md | 1596
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-04-rpo-rto-backup.md | 1848
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-05-เอกสารลับ.md | 879
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-06-เชื่อมระบบเดิม.md | 955
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\adr\ADR-07-ขอบเขตข้อมูล-ai.md | 1376
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\data-dictionary.md | 20689
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\schema-manifest-spec.md | 3763
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\spec-ยกเลิกและฉบับแทนที่.md | 6721
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\backup-restore-contract.md | 4777
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\phase-mapping.md | 4305
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\00-แผนหลักระยะที่-1.md | 24962
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\02-ข้อมูลและ-Google-Sheets.md | 4084
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\04-รายงาน-สำรองข้อมูล-การกู้คืน.md | 4079
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\07-ฐานข้อมูลกลางบุคลากร.md | 5531
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\10-แผนดำเนินงานระยะที่-1.md | 40447
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\docs\99-ประเด็นรอการตัดสินใจ.md | 3789
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\AGENTS.md | 6938
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\CONTEXT.md | 4993
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\README.md | 4413
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\prompts\master-prompt.md | 2865
+True | exists=D:\Dcg-Smart-Saraban-IDE-Starter\MasterPrompt-Dcg-Smart-Saraban-IDE.md | 2865
