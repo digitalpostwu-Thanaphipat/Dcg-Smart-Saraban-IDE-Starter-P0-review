@@ -93,6 +93,15 @@
 - เฟส 2: RBAC/Audit ลึกขึ้น + ต่อ Sheet เมื่อ Gate S
 - เฟส 3: Pilot หนังสือภายใน
 
+### ชุดส่งตรวจรับ
+
+| ช่องทาง | ค่า |
+|---------|-----|
+| GitHub (private) | https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review |
+| Commit (remote) | `ddbc38a` |
+| Commit (local D:\) | `ccdbda7` |
+| Skill Evidence | `docs/agent-runs/DCS-P1-001-evidence.md` |
+
 ### ผลการตรวจรับ
 
 - รอผู้ตรวจรับโครงการอนุมัติปิด DCS-P1-001
