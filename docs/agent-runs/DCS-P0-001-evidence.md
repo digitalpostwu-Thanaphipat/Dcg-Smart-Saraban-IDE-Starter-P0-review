@@ -1,4 +1,4 @@
-# หลักฐานการทำงานของ Agent — DCS-P0-001
+﻿# หลักฐานการทำงานของ Agent — DCS-P0-001
 
 ## ข้อมูลงาน
 
@@ -102,6 +102,21 @@
 
 **ยืนยันก่อนตรวจรับ:** ไม่มี `apps-script/`, ไม่มี `.ts/.js/package.json/.clasp.json`, ไม่มีไฟล์ credential/secret ในชุด
 
+
+### ชุดส่งตรวจรับ (เข้าถึงจากเครื่องอื่นได้)
+
+| ช่องทาง | ลิงก์ / Path |
+|---------|----------------|
+| **GitHub Repository (Private)** | https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review |
+| **Commit** | `4a02dd48fa2206c37e74cb5c435f6b919eb41640` |
+| **Clone** | `git clone https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review.git` |
+| **เริ่มตรวจ** | `docs/agent-runs/DCS-P0-001-evidence.md` |
+| ZIP ใน workspace เครื่องพัฒนา | `C:\Users\Admin\Dcg-Smart-Saraban-DCS-P0-001-review.zip` |
+
+**หมายเหตุ:** Repo เป็น Private — ผู้ตรวจรับต้อง login บัญชีที่มีสิทธิ์ (หรือให้ owner invite)  
+**ห้ามเริ่ม Phase 1** จนกว่าจะอนุมัติ DCS-P0-001
+
 ### ผลการตรวจรับ
 
 - รอผู้ตรวจรับโครงการ — **ห้ามเริ่ม Phase 1 Scaffold** จนกว่าจะอนุมัติ DCS-P0-001
+
