@@ -70,7 +70,7 @@
 | ช่องทาง | ค่า |
 |---------|-----|
 | Repo (Public) | https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review |
-| Commit | *(ระบุหลัง push — ดู commit ล่าสุดบน master)* |
+| Commit ส่งตรวจรับ | **`ffa4708`** — https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review/commit/ffa4708 |
 | Evidence | `docs/agent-runs/DCS-P2-001-evidence.md` |
 
 ## ผลการตรวจรับ
