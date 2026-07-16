@@ -1,0 +1,74 @@
+# DCS-P2-001 — Task Manifest
+# เฟส 2 / ส่วนต้น — RBAC และ Audit Log แบบจำลอง (หลังปิด DCS-P1-001)
+รหัสงาน: DCS-P2-001
+ชื่อเรื่อง: "Phase 2 Mock — RBAC และ Audit Log แบบจำลอง"
+ผู้ร้องขอ: "ผู้ตรวจรับโครงการ (หลังปิด DCS-P1-001 — เปิด Manifest ใหม่)"
+วันที่เริ่ม: ""
+สถานะ: ร่าง — พร้อมเริ่มเมื่อมีคำสั่ง execute
+
+อ้างอิง:
+  - "docs/00-แผนหลักระยะที่-1.md (Phase 2 Backend Core — ส่วนสิทธิ์/Audit)"
+  - "docs/10-แผนดำเนินงานระยะที่-1.md (เฟส 2)"
+  - "docs/phase-mapping.md"
+  - "docs/01-ข้อกำหนดระบบ.md (บทบาท / สถานะ)"
+  - "docs/02-ข้อมูลและ-Google-Sheets.md (คอลัมน์ Audit)"
+  - "docs/data-dictionary.md (การกำหนดสิทธิ์, บันทึกเหตุการณ์)"
+  - "งานก่อนหน้า: DCS-P1-001 (ปิดอย่างเป็นทางการ)"
+
+ขอบเขต:
+  ทำ:
+    - "ขยาย RBAC จำลอง: ตรวจบทบาท + ขอบเขตหน่วยงาน (fixture) ฝั่ง Backend เท่านั้น — UI ไม่เป็นจุดตัดสินสิทธิ์"
+    - "โมดูล Audit Log แบบ append-only ในหน่วยความจำ/fixture (ห้าม update/delete แถว audit)"
+    - "บันทึกเหตุการณ์สำคัญอย่างน้อย: login จำลองล้มเหลว/สำเร็จ, ปฏิเสธสิทธิ์, อ่านรายการเอกสาร, เปลี่ยนสถานะจำลอง (stub ถ้ามี)"
+    - "ฟิลด์ Audit สอดคล้อง docs/02 และ data-dictionary: รหัสเหตุการณ์, วันเวลา, ผู้กระทำ, บทบาท, ประเภท, ก่อน/หลัง, ผล, รหัสอ้างอิง (chain ถ้าออกแบบได้)"
+    - "ข้อความผิดพลาด/ปฏิเสธสิทธิ์เป็นภาษาไทย 100%"
+    - "Unit tests: บทบาทถูก/ผิด, ขอบเขตหน่วยงาน, audit ห้ามแก้ทับ, audit ถูกเขียนเมื่อปฏิเสธสิทธิ์"
+    - "คง lint / typecheck / test / build ผ่าน"
+    - "Skill Evidence เมื่อจบงาน"
+  ไม่ทำ:
+    - "เชื่อม Google Workspace / Google Sheets / Drive จริง"
+    - "deploy / clasp push / Staging / Production"
+    - "commit .clasp.json ที่มี scriptId หรือ secret"
+    - "ใช้ข้อมูลบุคลากรจริง / เอกสารจริง"
+    - "Business workflow เต็ม (ร่าง→กลั่นกรอง→ออกเลข) — เฟส 3"
+    - "ตั้งค่า SLA จริง (ADR-03) หรือ RPO/RTO จริง (ADR-04)"
+    - "เปิด AI กับข้อมูลจริง"
+
+กระบวนการที่ต้องใช้:
+  - รหัส: WF-02
+    เหตุผล: "สเปก RBAC/Audit contract จำลองและ Acceptance Criteria"
+  - รหัส: WF-04
+    เหตุผล: "TDD กฎสิทธิ์และ append-only audit"
+  - รหัส: WF-08
+    เหตุผล: "วางโมดูล auth/audit ในชั้นที่ถูกต้อง ไม่ให้ UI/router ถือกฎสิทธิ์"
+  - รหัส: WF-05
+    เหตุผล: "ก่อนปิดงาน ตรวจ Spec + Standards (ไทย, Backend RBAC, ไม่มี secret)"
+
+Skill_เฉพาะโครงการ:
+  - "apps-script-concurrency-and-audit"
+  - "apps-script-clasp-development (ชั้น auth — ห้าม push)"
+  - "google-sheets-data-contract (ถ้าแตะ mapping ชีตการกำหนดสิทธิ์/บันทึกเหตุการณ์ แบบ fixture)"
+Skill_ภายนอกที่อนุมัติ:
+  - "(ไม่บังคับ — Playwright e2e จริงยังรอ Gate S)"
+
+Acceptance_Criteria:
+  - "มี API/ฟังก์ชัน requireRole (หรือเทียบเท่า) ตรวจบทบาทและขอบเขตหน่วยงานจาก fixture"
+  - "Audit store append-only: unit ยืนยันว่า update/delete ถูกห้ามหรือไม่มี API ให้ทำ"
+  - "เมื่อถูกปฏิเสธสิทธิ์ มีรายการ audit ที่ตรวจสอบได้"
+  - "ข้อความผู้ใช้เป็นภาษาไทย"
+  - "npm run lint, typecheck, test, build ผ่าน"
+  - "ไม่มี Workspace / deploy / secret ใน repo"
+  - "มี DCS-P2-001-task.yml และ DCS-P2-001-evidence.md ก่อนปิดงาน"
+
+ความเสี่ยง_และ_การตัดสินใจที่ต้องรอ:
+  - "Gate S ยังไม่เปิด — ห้ามต่อ Sheet จริง"
+  - "ตาราง role ละเอียดสำหรับยกเลิก/แทนที่ยังรอรับรอง — ใช้ชุดบทบาท docs/01"
+  - "ADR ยังรอชื่อ/วันรับรองจริง"
+
+ไฟล์ที่คาดว่าจะกระทบ:
+  - "apps-script/server/auth/*"
+  - "apps-script/server/data/* (audit repository / permission fixture)"
+  - "apps-script/server/shared/*"
+  - "apps-script/server/entry/router.ts"
+  - "apps-script/tests/unit/*"
+  - "docs/agent-runs/DCS-P2-001-*"

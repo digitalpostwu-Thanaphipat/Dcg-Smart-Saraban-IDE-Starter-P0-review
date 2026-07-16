@@ -28,14 +28,14 @@
 
 ## การทดสอบ / คุณภาพ (ผลจริง)
 
-รันที่ `D:\Dcg-Smart-Saraban-IDE-Starter` หลัง `npm install`:
+รันที่ `D:\Dcg-Smart-Saraban-IDE-Starter` หลัง `npm install` (และผู้ตรวจรับรันซ้ำยืนยัน):
 
 | ชนิด | คำสั่ง | ผลจริง |
 |---|---|---|
 | Lint | `npm run lint` | **ผ่าน** (exit 0) |
 | Typecheck | `npm run typecheck` | **ผ่าน** (exit 0) |
 | Unit | `npm run test` | **ผ่าน** — 4 files, **9 tests** passed |
-| Build | `npm run build` | **ผ่าน** — `dist/apps-script/server.bundle.js` (~14.7kb) |
+| Build | `npm run build` | **ผ่าน** — `dist/apps-script/server.bundle.js` |
 | Playwright E2E | ไม่รัน | โครง config เท่านั้น (ห้าม Staging) |
 | clasp push / deploy | **ไม่ทำ** | ยืนยัน |
 | Workspace / ข้อมูลจริง | **ไม่ใช้** | personnel = MOCK-* เท่านั้น |
@@ -80,28 +80,34 @@
 - [x] ไม่เชื่อม Google Workspace / Sheets จริง
 - [x] ไม่มี credential / token / spreadsheet id production
 - [x] bundler: **esbuild** → IIFE ที่ `dist/` (บันทึกตาม Manifest)
+- [x] ยังไม่มี Business Workflow จริงเกิน Phase 1
 
 ### ความเสี่ยงคงเหลือ / รอผู้มีอำนาจ
 
 - ADR ยังรอชื่อ/วันรับรองจริง
-- Gate S ยังไม่เปิด — e2e จริงเลื่อน
+- Gate S ยังไม่เปิด — e2e จริง / เชื่อม Workspace เลื่อน
 - path generate Schema Manifest จาก Dictionary ยังเป็นข้อเสนอ
-- Business workflow เต็ม / Pilot หนังสือ = เฟสถัดไป
 
 ### งานถัดไป (นอกขอบเขต DCS-P1-001)
 
-- เฟส 2: RBAC/Audit ลึกขึ้น + ต่อ Sheet เมื่อ Gate S
-- เฟส 3: Pilot หนังสือภายใน
+- **DCS-P2-001** — RBAC และ Audit Log แบบจำลอง (ห้าม Workspace/deploy จนกว่า Gate S)
+- เฟส 3 ภายหลัง: Pilot หนังสือภายใน
 
-### ชุดส่งตรวจรับ
+### ชุดส่งตรวจรับ (ตรวจย้อนกลับ — แก้ 2569-07-16)
 
 | ช่องทาง | ค่า |
 |---------|-----|
-| GitHub (private) | https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review |
-| Commit (remote) | `ddbc38a` |
-| Commit (local D:\) | `ccdbda7` |
+| GitHub Repository | https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review |
+| ความเป็นส่วนตัวของ repo | **Public** (ไม่ใช่ private) |
+| Commit ที่ผู้ตรวจรับใช้ตรวจ scaffold + คุณภาพ | **`93748fa`** — https://github.com/digitalpostwu-Thanaphipat/Dcg-Smart-Saraban-IDE-Starter-P0-review/commit/93748fa |
+| Commit ที่นำ scaffold ขึ้น remote (parent ของหลักฐาน) | `ddbc38a` (feat scaffold) — อ้างอิงลำดับประวัติเท่านั้น ไม่ใช่ commit ส่งตรวจรับ |
 | Skill Evidence | `docs/agent-runs/DCS-P1-001-evidence.md` |
+| บันทึกปิดงาน | `docs/agent-runs/DCS-P1-001-acceptance.md` |
+
+> หมายเหตุ: เดิม Evidence ระบุ commit `ddbc38a` / `ccdbda7` และระบุ repo เป็น private ซึ่ง**ไม่ตรง**กับชุดที่ตรวจรับ — แก้ให้ตรง `93748fa` และ **public** แล้ว
 
 ### ผลการตรวจรับ
 
-- รอผู้ตรวจรับโครงการอนุมัติปิด DCS-P1-001
+- ผู้ตรวจรับยืนยันคุณภาพ lint/typecheck/test/build และขอบเขต mock scaffold ที่ commit **`93748fa`**
+- หลังแก้หลักฐาน 2 จุด (commit + visibility) แล้ว → **ปิดงาน DCS-P1-001 อย่างเป็นทางการ**
+- ดู `docs/agent-runs/DCS-P1-001-acceptance.md`
