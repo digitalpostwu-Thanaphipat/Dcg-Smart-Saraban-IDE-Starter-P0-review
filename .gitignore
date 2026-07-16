@@ -1,9 +1,27 @@
+# Secrets & local clasp (never commit real scriptId / tokens)
 .clasp.json
+.claspignore
 .env
 .env.*
 !.env.example
+credentials*.json
+**/service-account*.json
+*.pem
+
+# Dependencies & build
 node_modules/
 dist/
+coverage/
+
+# Playwright / test artifacts
 playwright-report/
 test-results/
+blob-report/
+
+# Logs & OS
 *.log
+.DS_Store
+Thumbs.db
+
+# Local archive copies (source of truth is git)
+*.zip

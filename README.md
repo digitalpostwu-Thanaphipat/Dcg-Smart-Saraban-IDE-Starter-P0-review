@@ -32,3 +32,37 @@
 Skills ที่มี: Google Sheets Data Contract, Apps Script/clasp, Concurrency/Audit, Release, Thai UI Quality และ Saraban Document Review
 
 ข้อความสำหรับผู้ใช้ในระบบ ชื่อชีต ชื่อคอลัมน์ สถานะ และข้อความแจ้งเตือนต้องเป็นภาษาไทย 100%
+
+## พัฒนาแบบจำลอง (Phase 1 / DCS-P1-001)
+
+ขอบเขต: **จำลองบนเครื่องเท่านั้น** — ห้าม `clasp push`, deploy, เชื่อม Google Workspace หรือใช้ข้อมูลจริง
+
+### ติดตั้งและตรวจคุณภาพ
+
+```bash
+npm install
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+```
+
+| คำสั่ง | ความหมาย |
+|--------|----------|
+| `npm run lint` | ESLint บน TypeScript |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run test` | Vitest unit tests (schema / auth / repository mock) |
+| `npm run build` | esbuild bundle → `dist/apps-script/server.bundle.js` (ยังไม่ deploy) |
+
+### โครงโค้ด
+
+- `apps-script/server/*` — ชั้น entry / auth / data (Fake gateway) ตาม `docs/08`
+- `apps-script/client/*` — HTML skeleton ภาษาไทย
+- `apps-script/tests/unit` — ทดสอบจำลอง
+- `apps-script/appsscript.json` — V8 placeholder (ไม่มี secret)
+- **ห้าม commit** `.clasp.json` ที่มี scriptId
+
+### งาน Agent
+
+- ปิด Phase 0: `docs/agent-runs/DCS-P0-001-acceptance.md`
+- งานปัจจุบัน: `docs/agent-runs/DCS-P1-001-task.yml`

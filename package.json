@@ -1,0 +1,30 @@
+{
+  "name": "dcg-smart-saraban-ide-starter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dcg Smart Saraban — Phase 1 mock scaffold (no Workspace deploy)",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint \"apps-script/**/*.ts\" \"scripts/**/*.{ts,mjs}\" \"*.ts\" --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "node scripts/build.mjs",
+    "format": "prettier --write \"apps-script/**/*.{ts,html,json}\" \"scripts/**/*\" \"*.ts\" \"*.json\" \"*.md\"",
+    "format:check": "prettier --check \"apps-script/**/*.{ts,html,json}\" \"scripts/**/*\" \"package.json\" \"tsconfig.json\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2",
+    "vitest": "^2.1.8"
+  }
+}
