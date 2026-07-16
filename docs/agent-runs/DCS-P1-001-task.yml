@@ -1,0 +1,99 @@
+# DCS-P1-001 — Task Manifest
+# Phase 1 / เฟส 1 — Scaffold จำลอง (หลังอนุมัติ DCS-P0-001 เอกสาร)
+รหัสงาน: DCS-P1-001
+ชื่อเรื่อง: "Phase 1 Scaffold จำลอง — โครงโปรเจกต์ + เครื่องมือ + mock data layer"
+ผู้ร้องขอ: "ผู้ตรวจรับโครงการ (อนุมัติ DCS-P0-001 แล้ว — อนุญาตเริ่ม Phase 1 จำลอง)"
+วันที่เริ่ม: "2569-07-16"
+สถานะ: ร่าง — พร้อมเริ่มเมื่อทีมรับงาน
+
+อ้างอิง:
+  - "docs/00-แผนหลักระยะที่-1.md (Phase 1)"
+  - "docs/10-แผนดำเนินงานระยะที่-1.md (เฟส 1)"
+  - "docs/phase-mapping.md"
+  - "docs/08-โครงสร้าง-Apps-Script-ผ่าน-IDE.md"
+  - "docs/data-dictionary.md"
+  - "docs/schema-manifest-spec.md"
+  - "docs/adr/* (ข้อเสนอชั่วคราว — ยังไม่ใช่การรับรอง ADR ธุรกิจ)"
+  - "งานก่อนหน้า: DCS-P0-001 (ผ่านตรวจรับเอกสาร)"
+
+ขอบเขต:
+  ทำ:
+    - "ยืนยัน/จัด Git repository ของชุด IDE (ถ้ายังไม่มีใน working tree หลัก) และ .gitignore ที่กัน secret/.clasp.json/credentials"
+    - "สร้างโครง apps-script/ ตาม docs/08: server/{entry,auth,domain,services,data,config,jobs,shared}, client/, tests/{unit,e2e}, scripts/"
+    - "ตั้งค่า package.json: TypeScript, ESLint, Prettier, Vitest หรือ Jest (unit), esbuild/หรือ bundler สำหรับ bundle → Apps Script"
+    - "ตั้งค่า tsconfig.json (strict พอสมควร) และ build script TypeScript → JavaScript แบบ IIFE/CJS ที่เหมาะกับ V8 Apps Script"
+    - "ตั้งค่า ESLint + Prettier และสคริปต์ npm: lint, typecheck, test, build"
+    - "โครง appsscript.json ขั้นต่ำ (V8) — ห้ามใส่ OAuth secret; scopes ขั้นต่ำเป็น placeholder ที่ไม่ผูกโปรเจกต์จริง"
+    - "Router/entry stub + requireAuth/requireRole แบบจำลอง (fixture user) — ข้อความผิดพลาดภาษาไทย"
+    - "ชั้น data: Repository interface + Fake/InMemory Sheet Gateway + Schema Validator อ่านจาก fixture ที่สอดคล้อง data-dictionary (ยังไม่ generate manifest.json จาก Sheets จริง)"
+    - "personnel-source แบบ Mock Contract เท่านั้น (ADR-01 เงื่อนไข Phase 1)"
+    - "มาตรฐานผลลัพธ์ API / error envelope ภาษาไทยใน server/shared"
+    - "Unit test จำลองอย่างน้อย: schema header หาย/ซ้ำ, auth ปฏิเสธบทบาทผิด, repository อ่านตามชื่อคอลัมน์"
+    - "Playwright: ตั้งค่า playwright.config + โครง e2e ว่างหรือ smoke ต่อ local mock เท่านั้น — ห้ามชี้ Staging URL จริง"
+    - "เอกสารคำสั่งรัน: README ส่วน dev (lint/typecheck/test/build) ภาษาไทยหรือไทย+อังกฤษสั้น"
+    - "สร้าง docs/agent-runs/DCS-P1-001-evidence.md เมื่อจบงาน"
+  ไม่ทำ:
+    - "deploy / clasp push / clasp login ไปโปรเจกต์จริง"
+    - "สร้างหรือเชื่อม Google Sheets / Drive / Workspace จริง"
+    - "commit .clasp.json ที่มี scriptId, token, spreadsheet id, service account"
+    - "ใช้หรือนำเข้าข้อมูลบุคลากรจริง เอกสารจริง Secret"
+    - "ตั้งค่า SLA จริง (ADR-03 Deferred) หรือ RPO/RTO จริง (ADR-04 Deferred)"
+    - "เปิด AI API กับข้อมูลจริง (ADR-07)"
+    - "Business flow เต็ม (ร่าง/กลั่นกรอง/ออกเลข) — เป็นเฟสถัดไปหลัง scaffold ผ่าน"
+    - "Pilot หนังสือภายในครบ E2E — เฟส 3"
+    - "Production / Staging Web App"
+    - "ติดตั้ง Skill ภายนอกเพิ่มนอก Playwright ที่ skills.lock อนุมัติแนวแล้ว (ล็อกรุ่นใน package.json เมื่อเพิ่ม)"
+
+กระบวนการที่ต้องใช้:
+  - รหัส: WF-08
+    เหตุผล: "ทบทวนสถาปัตยกรรมและแยกชั้น apps-script ตาม docs/08"
+  - รหัส: WF-03
+    เหตุผล: "แตกงานย่อย scaffold ที่มี dependency (tooling → structure → mock data → tests)"
+  - รหัส: WF-04
+    เหตุผล: "unit test จำลองนำก่อน/คู่กับการ implement gateway และ auth stub"
+  - รหัส: WF-02
+    เหตุผล: "เมื่อต้องล็อก interface Repository/personnel mock ให้สอดคล้อง Data Dictionary — ไม่เดาคอลัมน์ธุรกิจใหม่"
+
+Skill_เฉพาะโครงการ:
+  - "apps-script-clasp-development (โครงและกติกาชั้นงาน — ห้าม push)"
+  - "google-sheets-data-contract (Fake gateway + schema check ตามชื่อหัวคอลัมน์)"
+  - "apps-script-concurrency-and-audit (เตรียมจุด audit helper stub ถ้าแตะ — ไม่ implement ออกเลขจริง)"
+Skill_ภายนอกที่อนุมัติ:
+  - "Playwright (EXT-001 อนุมัติใช้) — เฉพาะโครง/config; ยังไม่บังคับรันต่อ URL Staging"
+
+Acceptance_Criteria:
+  - "มีโครงโฟลเดอร์ apps-script/ ตรง docs/08 ครบชั้นหลัก"
+  - "คำสั่ง npm run lint, typecheck, test, build รันผ่านบนเครื่องพัฒนาโดยไม่ต้องมี Workspace"
+  - "Unit test อย่างน้อย 3 กรณีจำลองผ่าน (schema, auth role, column-name mapping)"
+  - "personnel source เป็น mock — ไม่มี URL/Sheet id จริงในโค้ด"
+  - "ไม่มี .clasp.json ที่มี scriptId ใน git; .gitignore กัน secret"
+  - "ไม่มี credential, token, spreadsheet id production ใน repository"
+  - "README/docs อธิบายวิธีรันจำลองชัดเจน"
+  - "มี DCS-P1-001-task.yml และ DCS-P1-001-evidence.md ครบก่อนปิดงาน"
+  - "รายงานยืนยันว่าไม่ได้ clasp push / deploy / เชื่อม Workspace"
+
+ความเสี่ยง_และ_การตัดสินใจที่ต้องรอ:
+  - "ADR-01…07 ยังรอชื่อ/วันรับรองจริง — scaffold ใช้ข้อเสนอชั่วคราวเท่านั้น"
+  - "path ไฟล์ schema-manifest.json ตอน generate — ใช้ข้อเสนอใน schema-manifest-spec จนกว่าจะยืนยัน"
+  - "Gate S (Workspace) ยังไม่เปิด — e2e จริงเลื่อน"
+  - "รูปแบบ bundler (esbuild vs อื่น) เลือกได้ในงานนี้แต่ต้องบันทึกใน evidence"
+
+ไฟล์ที่คาดว่าจะกระทบ:
+  - "package.json, package-lock.json หรือเทียบเท่า"
+  - "tsconfig.json, eslint/prettier configs"
+  - "apps-script/**/*"
+  - "scripts/build.*"
+  - "playwright.config.ts (หรือ .js)"
+  - ".gitignore"
+  - "README.md (ส่วน dev)"
+  - "docs/agent-runs/DCS-P1-001-task.yml"
+  - "docs/agent-runs/DCS-P1-001-evidence.md"
+  - "อาจมี apps-script/server/config/schema-manifest.generated.json จาก fixture — ไม่ใช่ข้อมูลจริง"
+
+เกณฑ์จบตามแผนหลัก Phase 1 (ย่อ):
+  - "โครงสร้างตรง docs/08"
+  - "build, lint, typecheck, test แบบจำลองผ่าน (ไม่ใช่ clasp push)"
+  - "Repository Interface + mock พร้อม"
+  - "ไม่มี Secret/ข้อมูลจริงใน repo"
+  - "Task Manifest + Skill Evidence ครบ"
+  # Data Dictionary และ ADR ทำแล้วใน DCS-P0-001 — งานนี้ reuse ไม่สร้างซ้ำทั้งชุด
